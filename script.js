@@ -28,3 +28,8 @@ function changeImage(direction) {
 function closeModal() {
     modal.style.display = 'none';
 }
+
+function toggleMenu() {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.toggle('active');
+}
