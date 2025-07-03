@@ -1,0 +1,39 @@
+.logo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); /* Flexibele kolommen */
+    gap: 20px; /* Ruimte tussen de logo's */
+}
+
+.logo-grid img {
+    max-width: 100%; /* Zorgt ervoor dat de logo's niet groter zijn dan hun container */
+    height: auto; /* Houdt de verhoudingen van de logo's intact */
+    display: block; /* Zorgt ervoor dat de afbeelding als een blok wordt weergegeven */
+    margin: 0 auto; /* Centreert de afbeelding binnen de cel */
+    align-self: center; /* Centreert de afbeelding verticaal binnen de cel */
+    justify-self: center; /* Centreert de afbeelding horizontaal binnen de cel */
+}
+
+.logo-grid img {
+    transition: transform 0.3s; /* Voor een soepele overgang */
+}
+
+/* Zigzag-effect */
+.logo-grid img:nth-child(odd) {
+    transform: rotate(2.5deg) translateY(-15px); /* Oneven logo's omhoog en licht gedraaid */
+}
+
+.logo-grid img:nth-child(even) {
+    transform: rotate(-3deg) translateY(15px); /* Even logo's omlaag en licht gedraaid */
+}
+
+@media (max-width: 768px) {
+    .logo-grid {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr)); /* Kleinere logo's voor tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-grid {
+        grid-template-columns: repeat(auto-fill, minmax(60px, 1fr)); /* Nog kleinere logo's voor smartphones */
+    }
+}
