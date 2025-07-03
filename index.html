@@ -3,15 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mijn Website</title>
+    <title>Siebren de van der Schueren</title>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="styles/reset.css">
+	<link rel="stylesheet" href="styles/typography.css">
+	<link rel="stylesheet" href="styles/layout.css">
+	<link rel="stylesheet" href="styles/navigation.css">
+	<link rel="stylesheet" href="styles/headerfooter.css">
+	<link rel="stylesheet" href="styles/media-queries.css">
+	<link rel="stylesheet" href="styles/home/frontimage.css">
+	<link rel="stylesheet" href="styles/home/showreel.css">
+	<link rel="stylesheet" href="styles/home/homepagegallery.css">
 </head>
 <body>
 
 <header>
     <div class="name">SIEBREN DE VAN DER SCHUEREN</div>
-    <nav>		
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+    <nav id="navbar">		
 		<a href="index.html">HOME</a>
 		<a href="over-siebren.html">OVER SIEBREN</a>
 		<a href="producties.html">PRODUCTIES</a>
@@ -19,8 +28,16 @@
 		<a href="fotos.html">FOTO'S</a>
 		<a href="contact.html">CONTACT</a>
 	</nav>
-
 </header>
+
+<script>
+function toggleMenu() {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.toggle('active');
+}
+</script>
+
+
 
 <div class="front-image-container">
     <img src="images/SiebrenDeVanDerSchueren_WS_30625.jpg" alt="Front Image" class="front-image">
@@ -33,8 +50,10 @@
 
 <div class="showreel">
     <h1 class="title">Showreel</h1>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/sBoMvGya9fk?autoplay=1&mute=1&start=42&loop=1&rel=0" frameborder="0" allowfullscreen></iframe>
+    <iframe src="https://www.youtube.com/embed/sBoMvGya9fk?autoplay=1&mute=1&start=42&loop=1&rel=0" frameborder="0" allowfullscreen></iframe>
 </div>
+
+
 
 <div class="producties">
     <h1 class="title">Producties</h1>
