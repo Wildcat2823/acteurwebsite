@@ -5,13 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Producties</title>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="styles/reset.css">
+	<link rel="stylesheet" href="styles/typography.css">
+	<link rel="stylesheet" href="styles/layout.css">
+	<link rel="stylesheet" href="styles/navigation.css">
+	<link rel="stylesheet" href="styles/headerfooter.css">
+	<link rel="stylesheet" href="styles/media-queries.css">
+	<link rel="stylesheet" href="styles/producties/productielijst.css">
 </head>
 <body>
 
 <header>
     <div class="name">SIEBREN DE VAN DER SCHUEREN</div>
-    <nav>		
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+    <nav id="navbar">		
 		<a href="index.html">HOME</a>
 		<a href="over-siebren.html">OVER SIEBREN</a>
 		<a href="producties.html">PRODUCTIES</a>
@@ -20,6 +27,13 @@
 		<a href="contact.html">CONTACT</a>
 	</nav>
 </header>
+
+<script>
+function toggleMenu() {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.toggle('active');
+}
+</script>
 
 <main>
     <h1 class="title">ACTUELE PRODUCTIES</h1>
@@ -35,6 +49,8 @@
 	<strong>Voorjaar 2026</strong><br>
 	<strong>De Sterke Wil</strong> – Globetheater Diever
 	
+	<br><br>
+	
 	</p>
 	
 	
@@ -45,45 +61,45 @@
 			<em>Unspoken (film)</em> – <strong>Asesina Productions</strong>, Regie: Martin Bergmann<br>
 			<em>Wintersprookje (theater)</em> – <strong>Shakespearetheater Diever</strong>, Regie: Jack Nieborg<br>
 			<em>High 5 (film)</em> – <strong>ZEBDOS Productions</strong>, Regie: Zeb Bulthuis<br>
-			<em>Door de Bomen het Bos Niet Meer Zien (film)</em> – <strong>FNSTR Producties</strong>, Regie: Jessa Feenstra<br>
+			<em>Door de Bomen het Bos Niet Meer Zien (film)</em> – <strong>FNSTR Producties</strong>, Regie: Jessa Feenstra<br><br>
 			
 			<p><strong>2023</strong><br>
 			
 			<em>Broodkapje & een Stuk of Zeven Geitjes (o.a. Bert Visscher, theater)</em> – <strong>TIS</strong>, Regie: Jack Nieborg<br>
 			<em>Antonius & Cleopatra (theater)</em> – <strong>Shakespearetheater Diever</strong>, Regie: Jack Nieborg<br>
-			<em>Romeo & Julia (theater)</em> – <strong>Shakespearetheater Diever</strong>, Regie: Jack Nieborg<br>
+			<em>Romeo & Julia (theater)</em> – <strong>Shakespearetheater Diever</strong>, Regie: Jack Nieborg<br><br>
 			
 			<p><strong>2022</strong><br>
 			
 			<em>De Koopman van Venetië (theater)</em> – <strong>Shakespearetheater Diever</strong>, Regie: Jack Nieborg<br>
 			<em>Lang Leve de Familie (theater)</em> – <strong>Theater van de Grond</strong>, Regie: Jack Nieborg<br>
 			<em>Gespreksvaardigheden Noordhoff (video)</em> – <strong>MSTRWRK Mediaproducties</strong>, Regie: Wouter Koopmans<br>
-			<em>Midzomernachtsdroom (theater)</em> – <strong>Shakespearetheater Diever</strong>, Regie: Jack Nieborg<br>
+			<em>Midzomernachtsdroom (theater)</em> – <strong>Shakespearetheater Diever</strong>, Regie: Jack Nieborg<br><br>
 			
 			<p><strong>2021</strong><br>
 			
 			<em>De Miraculeuze Comeback van het Voormalig Verzet (theater)</em> – <strong>Speelgoud Theater</strong>, Regie: Jack Nieborg<br>
-			<em>Themabekendmaking 25e Lustrum (film)</em> – <strong>Albertus Magnus</strong>, Regie: Tommy Reerink<br>
+			<em>Themabekendmaking 25e Lustrum (film)</em> – <strong>Albertus Magnus</strong>, Regie: Tommy Reerink<br><br>
 			
 			<p><strong>2020</strong><br>
 			
 			<em>Verzet! (theater)</em> – <strong>Speelgoud Theater</strong>, Regie: Jack Nieborg<br>
-			<em>Presentatie Educatieve Methoden (video)</em> – <strong>Koninklijke Boom Uitgevers</strong>, Regie: Jelle Buning<br>
+			<em>Presentatie Educatieve Methoden (video)</em> – <strong>Koninklijke Boom Uitgevers</strong>, Regie: Jelle Buning<br><br>
 			
 			<p><strong>2019</strong><br>
 			
 			<em>Totally Shifted (Lustrumvoorstelling RUG, theater)</em> – <strong>Rijksuniversiteit Groningen</strong>, Regie: Jack Nieborg<br>
 			<em>Liek Achter de Badde (film)</em> – <strong>On Air Media</strong>, Regie: Dirk de Jong<br>
-			<em>En Verlos Ons Van het Kwade (theater)</em> – <strong>Groninger Studententoneel</strong>, Regie: Tim van der Molen<br>
+			<em>En Verlos Ons Van het Kwade (theater)</em> – <strong>Groninger Studententoneel</strong>, Regie: Tim van der Molen<br><br>
 			
 			<p><strong>2018</strong><br>
 			
 			<em>De Vrouw Met de Baard (theater)</em> – <strong>Groninger Studententoneel</strong>, Regie: Jelle Buning<br>
-			<em>Lord Of the Flies (theater)</em> – <strong>Idiomotor</strong>, Regie: Dio van der Velden<br>
+			<em>Lord Of the Flies (theater)</em> – <strong>Idiomotor</strong>, Regie: Dio van der Velden<br><br>
 			
 			<p><strong>2016</strong><br>
 			
-			<em>De Mensenhater (theater)</em> – <strong>Eloquentia</strong>, Regie: Joke Holwerda<br>
+			<em>De Mensenhater (theater)</em> – <strong>Eloquentia</strong>, Regie: Joke Holwerda<br><br>
 			
 			<p><strong>2015</strong><br>
 			
