@@ -1,0 +1,69 @@
+.hamburger {
+    display: none; /* Verberg standaard */
+    font-size: 30px;
+    cursor: pointer;
+}
+
+nav {
+    display: flex; /* Standaard weergave */
+}
+
+footer nav {
+    display: flex;
+    justify-content: center; /* Centraal uitlijnen van de footer navigatie */
+}
+
+footer nav a {
+    margin: 0 15px;
+}
+
+footer p {
+    margin: 10px 0 0; /* Ruimte boven de copyright tekst */
+}
+
+@media (max-width: 1215px) {
+    .hamburger {
+        display: block; /* Toon hamburgermenu op kleine schermen */
+    }
+
+    nav {
+        display: none; /* Verberg navigatie standaard */
+        flex-direction: column; /* Stapel navigatie-items */
+        width: 100%;
+    }
+
+    nav.active {
+        display: flex; /* Toon navigatie als actief */
+    }
+}
+
+@media (max-width: 768px) {
+    .name {
+        font-size: 24px;
+    }
+
+    nav {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    nav a {
+        margin: 5px 0;
+        display: block;
+    }
+
+@media (max-width: 500px) {
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+	
+	.name {
+        font-size: 22px;
+    }
+	
+	.hamburger {
+		font-size: 24px;
+	}
+}

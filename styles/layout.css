@@ -1,0 +1,25 @@
+header {
+    background-color: #FF4500;
+    color: #1A1A1A;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    font-size: 16px;
+    flex-wrap: wrap;
+}
+
+footer {
+    background-color: #FF4500;
+    color: #1A1A1A;
+    padding: 20px 0;
+    font-size: 17px;
+}
+
+main {
+    margin: 20px;
+    padding: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
