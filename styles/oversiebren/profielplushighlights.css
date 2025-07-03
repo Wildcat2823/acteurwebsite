@@ -1,0 +1,39 @@
+.profile {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.portrait {
+    width: 200px; /* Pas de breedte aan naar wens */
+    height: auto;
+    border-radius: 50%; /* Maakt de afbeelding */
+	margin-right: 35px; /* Verhoog deze waarde voor meer ruimte */
+}
+
+.highlight-item {
+    margin: 10px 0; /* Ruimte tussen de items */
+    padding: 10px; /* Optionele padding voor extra ruimte */
+    background-color: #f0f0f0; /* Achtergrondkleur voor de items */
+    border-radius: 5px; /* Ronde hoeken */
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* Schaduw voor diepte */
+}
+
+@media (max-width: 768px) {
+    .profile {
+        flex-direction: column; /* Verander de richting naar kolom op kleinere schermen */
+        align-items: center; /* Centreer de inhoud */
+    }
+
+    .portrait {
+        width: 150px; /* Kleinere breedte voor kleinere schermen */
+        margin-right: 0; /* Verwijder de rechter marge */
+        margin-bottom: 20px; /* Voeg marge onder de afbeelding toe */
+    }
+}
+
+@media (max-width: 480px) {
+    .portrait {
+        width: 100px; /* Nog kleinere breedte voor zeer kleine schermen */
+    }
+}
