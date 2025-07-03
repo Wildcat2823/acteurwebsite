@@ -5,13 +5,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trainingen</title>
     <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+	<link rel="stylesheet" href="styles/reset.css">
+	<link rel="stylesheet" href="styles/typography.css">
+	<link rel="stylesheet" href="styles/layout.css">
+	<link rel="stylesheet" href="styles/navigation.css">
+	<link rel="stylesheet" href="styles/headerfooter.css">
+	<link rel="stylesheet" href="styles/media-queries.css">
+	<link rel="stylesheet" href="styles/trainingen/logoraster.css">
 </head>
 <body>
 
 <header>
     <div class="name">SIEBREN DE VAN DER SCHUEREN</div>
-    <nav>		
+    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
+    <nav id="navbar">		
 		<a href="index.html">HOME</a>
 		<a href="over-siebren.html">OVER SIEBREN</a>
 		<a href="producties.html">PRODUCTIES</a>
@@ -21,9 +28,18 @@
 	</nav>
 </header>
 
+<script>
+function toggleMenu() {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.toggle('active');
+}
+</script>
+
 <main>
     <h1 class="title">Trainingen</h1>
 	Als acteur help ik professionals hun communicatieve vaardigheden en sociale interacties te verbeteren. Met mijn achtergrond in theater creëer ik een veilige omgeving waarin deelnemers kunnen <strong>oefenen</strong>, <strong>feedback ontvangen</strong> en <strong>groeien</strong>. Of het nu gaat om leiderschap, slecht nieuws of agressie, ik pas mijn aanpak aan op de specifieke behoeften van de groep. Samen zorgen we ervoor dat elke sessie niet alleen <strong>leerzaam</strong>, maar ook <strong>leuk</strong> is.</p>
+		
+	<br>
 	
 	<h1 class="title">Organisaties</h1>
     <p>Als trainingsacteur werk ik samen met verschillende organisaties die mijn vaardigheden en ervaring erkennen:<br><br>
@@ -37,6 +53,8 @@
     <strong><a href="https://www.span-info.nl/" target="_blank">Span Organisatie-advies & Opleidingen</a></strong><br>
     <strong><a href="https://groupmoovs.com/nl/home-2/" target="_blank">Group Moovs</a></strong><br>
 	<strong><a href="https://www.buroacting.nl/" target="_blank">Buro Acting</a></strong><br></p>
+
+	<br>
 	
 	<h1 class="title">Klanten</h1>
     <div class="logo-grid">
@@ -79,7 +97,7 @@
 		<img src="https://www.nivogroep.nl/app/themes/nivo/assets/images/logo.svg?x55567" alt="Nivo">
 	</div>
 	
-	
+
 	<br>
 	
 </main>
