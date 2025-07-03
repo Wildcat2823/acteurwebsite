@@ -1,0 +1,15 @@
+.producties-lijst {
+    width: 80%; /* Of een andere breedte naar keuze */
+    margin: 0 auto; /* Centreert de container */
+    text-align: left; /* Zorgt ervoor dat de tekst binnen het blok links uitgelijnd is */
+}
+
+.producties-lijst h2 {
+    text-align: center; /* Centreert de titels binnen de container */
+}
+
+@media (max-width: 768px) {
+    .producties-lijst {
+        width: 100%;
+    }
+}
