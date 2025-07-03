@@ -1,0 +1,18 @@
+.showreel {
+    margin: 40px auto; /* Ruimte boven en onder de showreel sectie en centreert de container */
+    max-width: 800px; /* Maximale breedte van de showreel */
+    position: relative;
+}
+
+.showreel h1.title {
+    text-align: center; /* Centreert de titel */
+    margin-bottom: 20px; /* Ruimte onder de titel */
+}
+
+.showreel iframe {
+    width: 100%; /* Volledige breedte van de container */
+    height: 100%; /* Zorgt ervoor dat de iframe de juiste hoogte krijgt */
+    aspect-ratio: 16 / 9; /* Houdt de 16:9 verhouding */
+    border: none; /* Verwijdert de rand van de iframe */
+    display: block; /* Zorgt ervoor dat de iframe als blok wordt weergegeven */
+}

@@ -1,0 +1,84 @@
+.front-image-container {
+    position: relative; /* Zorgt ervoor dat de caption relatief gepositioneerd kan worden */
+    display: flex; /* Gebruik flexbox voor centreren */
+    justify-content: center; /* Horizontaal centreren */
+    align-items: flex-start; /* Verticaal uitlijnen naar de bovenkant */
+    overflow: hidden; /* Zorgt ervoor dat de afbeelding niet buiten de container valt */
+    height: auto; /* Stel een vaste hoogte in voor de container */
+    width: 100%; /* Zorgt ervoor dat de container responsief is */
+    max-height: 550px; /* Stel een maximale hoogte in */
+	background-color: #141414
+}
+
+.front-image {
+    max-width: 30%; /* Zorgt ervoor dat de afbeelding responsief is */
+    height: auto; /* Houdt de verhoudingen van de afbeelding */
+    object-fit: cover; /* Zorgt ervoor dat de afbeelding de container opvult zonder vervorming */
+    margin-top: -0%; /* Pas deze waarde aan om de afbeelding omhoog te verschuiven */
+}
+
+.front-image-caption {
+    position: absolute; /* Absoluut positioneren ten opzichte van de parent */
+    bottom: 30px; /* Afstand van de onderkant van de afbeelding */
+    right: 30px; /* Afstand van de rechterkant van de afbeelding */
+    color: #FF4500; /* Kleur van de tekst */
+    background-color: transparent; /* Geen achtergrondkleur */
+    padding: 10px; /* Padding rondom de tekst */
+    border-radius: 5px; /* Optionele afgeronde hoeken */
+    text-align: right; /* Tekst uitlijnen naar rechts */
+    font-size: 35px; /* Pas de lettergrootte aan naar wens */
+}
+
+@media (max-width: 1083px) {
+	.front-image {
+		max-width: 38%; /* Zorgt ervoor dat de afbeelding responsief is */
+	}
+}
+
+@media (max-width: 862px) {
+    .front-image-caption {
+        font-size: 30px;
+		bottom: 20px;
+		right: 20px;
+    }
+	
+	.subtitle {
+		font-size: 22px;
+	}
+	
+	.front-image {
+		max-width: 35%; /* Zorgt ervoor dat de afbeelding responsief is */
+	}
+}
+
+@media (max-width: 700px) {	
+	.front-image-caption {
+        font-size: 20px;
+		bottom: 10px;
+		right: 10px;
+    }
+	
+	.subtitle {
+		font-size: 12px;
+	}
+	
+	.front-image {
+		max-width: 50%; /* Zorgt ervoor dat de afbeelding responsief is */
+	}
+}
+
+@media (max-width: 480px) {
+    .front-image-caption {
+        font-size: 10px;
+		bottom: 5px;
+		right: 5px;
+    }
+	
+	.subtitle {
+		font-size: 6px;
+	}
+	
+	.front-image {
+		max-width: 60%; /* Zorgt ervoor dat de afbeelding responsief is */
+	}
+}
