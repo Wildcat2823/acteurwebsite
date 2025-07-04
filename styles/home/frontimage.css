@@ -69,16 +69,32 @@
 
 @media (max-width: 480px) {
     .front-image-caption {
-        font-size: 10px;
+        font-size: 15px;
 		bottom: 5px;
 		right: 5px;
     }
 	
 	.subtitle {
-		font-size: 6px;
+		font-size: 10px;
 	}
 	
 	.front-image {
-		max-width: 60%; /* Zorgt ervoor dat de afbeelding responsief is */
+		max-width: 40%; /* Zorgt ervoor dat de afbeelding responsief is */
+	}
+}
+
+@media (max-width: 360px) {
+    .front-image-caption {
+        font-size: 12px;
+		bottom: 5px;
+		right: 5px;
+    }
+	
+	.subtitle {
+		font-size: 8px;
+	}
+	
+	.front-image {
+		max-width: 35%; /* Zorgt ervoor dat de afbeelding responsief is */
 	}
 }
