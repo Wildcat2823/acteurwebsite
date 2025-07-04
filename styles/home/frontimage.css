@@ -70,8 +70,8 @@
 @media (max-width: 480px) {
     .front-image-caption {
         font-size: 15px;
-		bottom: 5px;
-		right: 5px;
+		bottom: 3px;
+		right: 3px;
     }
 	
 	.subtitle {
@@ -86,8 +86,8 @@
 @media (max-width: 360px) {
     .front-image-caption {
         font-size: 12px;
-		bottom: 5px;
-		right: 5px;
+		bottom: 3px;
+		right: 3px;
     }
 	
 	.subtitle {
