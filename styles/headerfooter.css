@@ -67,3 +67,23 @@ footer p {
 		font-size: 24px;
 	}
 }
+
+@media (max-width: 402px) {
+	.name {
+        font-size: 18px;
+    }
+	
+	.hamburger {
+		font-size: 20px;
+	}
+}
+
+@media (max-width: 336px) {
+	.name {
+        font-size: 16px;
+    }
+	
+	.hamburger {
+		font-size: 18px;
+	}
+}
