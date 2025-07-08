@@ -129,5 +129,15 @@ function toggleMenu() {
     <p>&copy; 2025 Siebren de van der Schueren. Alle rechten voorbehouden.</p>
 </footer>
 
+<script>
+  // Controleer of de URL eindigt op .html
+  if (window.location.pathname.endsWith('.html')) {
+    // Verwijder .html van de URL
+    const newPath = window.location.pathname.slice(0, -5);
+    // Update de URL zonder de pagina te herladen
+    window.history.replaceState(null, '', newPath);
+  }
+</script>
+	
 </body>
 </html>
