@@ -105,6 +105,14 @@ function toggleMenu() {
     <p>&copy; 2025 Siebren de van der Schueren. Alle rechten voorbehouden.</p>
 </footer>
 
+<script>
+  // Controleer of de URL eindigt op /index.html
+  if (window.location.pathname === '/index.html') {
+    // Verander de URL naar de root zonder de pagina te herladen
+    window.history.replaceState(null, '', '/');
+  }
+</script>
+	
 </body>
 </html>
 
