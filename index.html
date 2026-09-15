@@ -1,126 +1,1164 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Siebren de van der Schueren</title>
-    <link href="https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap" rel="stylesheet">
-	<link rel="stylesheet" href="styles/reset.css">
-	<link rel="stylesheet" href="styles/typography.css">
-	<link rel="stylesheet" href="styles/layout.css">
-	<link rel="stylesheet" href="styles/navigation.css">
-	<link rel="stylesheet" href="styles/headerfooter.css">
-	<link rel="stylesheet" href="styles/media-queries.css">
-	<link rel="stylesheet" href="styles/home/frontimage.css">
-	<link rel="stylesheet" href="styles/home/showreel.css">
-	<link rel="stylesheet" href="styles/home/homepagegallery.css">
-	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Siebren de van der Schueren — Actor & Model</title>
+  <style>
+    :root{
+      --bg:#fff;
+      --fg:#000;
+      --muted:#111;
+      --card:#fff;
+      --line:#000;
+      --focus:#000;
+      --shadow: none;
+      --radius: 14px;
+      --container: 100%;
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--fg);
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      line-height:1.4;
+      overflow-x:hidden; /* extra zekerheid: geen horizontale scroll */
+    }
+
+    img, video, iframe{
+      max-width:100%;
+      height:auto;
+      display:block;
+    }
+
+    a{
+      color:inherit;
+      text-decoration:none;
+      border-bottom:1px solid transparent;
+    }
+    a:hover{ border-bottom-color:var(--line); }
+
+    .container{
+      width:100%;
+      padding: 20px 16px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header{
+      border-bottom:1px solid var(--line);
+      padding: 14px 0;
+      background:var(--bg);
+      position: relative; /* geen absolute op mobiel */
+    }
+    .header-inner{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:baseline;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .brand-title{
+      font-weight:800;
+      letter-spacing:0.2px;
+      font-size: 18px;
+      margin:0;
+    }
+    .brand-sub{
+      margin:0;
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing:0.2px;
+    }
+
+    nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    .nav-links a{
+      padding: 6px 10px;
+      border:1px solid transparent;
+      border-radius:999px;
+      font-size: 13px;
+      background:transparent;
+      transition: border-color .15s ease, background .15s ease;
+    }
+    .nav-links a[aria-current="page"]{
+      border-color:var(--line);
+      background:#f7f7f7;
+    }
+
+    .lang{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      flex-wrap:wrap;
+    }
+    label{
+      font-size: 13px;
+      color: var(--muted);
+    }
+    select{
+      font: inherit;
+      padding: 7px 10px;
+      border:1px solid var(--line);
+      border-radius: 10px;
+      background:#fff;
+      color:#000;
+      min-width: 160px;
+    }
+
+    main{ padding-top: 10px; }
+
+    /* HERO */
+    .hero{
+      padding: 18px 0 10px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1fr; /* mobiel */
+      gap: 14px;
+      align-items:start;
+    }
+
+    .hero-photo{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      overflow:hidden;
+    }
+
+    .hero-photo img{
+      width:100%;
+      object-fit:cover;
+    }
+	
+	.hero-photo img {
+		opacity: 1;
+		transition: opacity 0.3s ease-in-out;
+	}
+
+	.hero-photo img.is-changing {
+		opacity: 0;
+	}
+
+
+    .hero-copy h1{
+      font-size: 22px;
+      margin: 0 0 8px;
+      letter-spacing:0.2px;
+      line-height:1.2;
+    }
+
+    .lede{
+      margin: 0;
+      font-size: 14px;
+      color: var(--muted);
+	  white-space: pre-line;
+    }
+
+    /* quick facts + contact */
+    .two-col{
+      display:grid;
+      grid-template-columns: 1fr; /* mobiel */
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .panel{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--card);
+      padding: 14px;
+    }
+
+    .panel h2{
+      margin: 0 0 10px;
+      font-size: 14px;
+      letter-spacing:0.2px;
+    }
+
+    .facts{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+
+    .fact-row{
+      display:flex;
+      justify-content:space-between;
+      gap: 12px;
+      border-bottom: 1px solid #000;
+      padding-bottom: 10px;
+    }
+    .fact-row:last-child{
+      border-bottom:0;
+      padding-bottom:0;
+    }
+
+    .fact-k{
+      font-size: 13px;
+      color: var(--muted);
+      white-space:nowrap;
+    }
+    .fact-v{
+      font-size: 13px;
+      font-weight:600;
+      text-align:right;
+    }
+
+    .contact a{
+      border-bottom:1px solid var(--line);
+      padding-bottom:2px;
+    }
+
+    /* Gallery */
+    .section-title{
+      margin: 18px 0 12px;
+      font-size: 14px;
+      letter-spacing:0.2px;
+      color: var(--muted);
+    }
+
+    .gallery{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .thumb{
+      border:1px solid var(--line);
+      border-radius: var(--radius);
+      overflow:hidden;
+      background:#fff;
+    }
+    .thumb img{
+      width:100%;
+      height: auto;
+    }
+
+    /* Pages visibility (single-file) */
+    .page{ display:none; }
+    .page.is-active{ display:block; }
+
+    /* Footer */
+    footer{
+      border-top:1px solid var(--line);
+      margin-top: 18px;
+    }
+    .footer-inner{
+      padding: 18px 16px;
+      max-width: 1000px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    /* Desktop tweaks */
+    @media (min-width: 900px){
+      .container{ padding: 28px 20px; }
+      .header-inner{ gap: 12px; }
+      .hero-grid{
+        grid-template-columns: 380px 1fr; /* links foto, rechts tekst */
+        gap: 18px;
+      }
+      .two-col{
+        grid-template-columns: 1.15fr .85fr; /* facts + contact naast elkaar */
+      }
+      .facts{ grid-template-columns: 1fr; }
+      .gallery{
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+      .brand-title{ font-size: 20px; }
+    }
+  </style>
 </head>
+
 <body>
+  <header>
+    <div class="container">
+      <div class="header-inner">
+        <div class="brand">
+          <div>
+            <p class="brand-title" id="brandName">Siebren de van der Schueren</p>
+            <p class="brand-sub" id="brandRole">Actor & Model</p>
+          </div>
+          <div class="lang">
+            <label for="langSelect" id="langLabel">Language</label>
+            <select id="langSelect" name="langSelect" aria-label="Language">
+              <option value="nl">Nederlands</option>
+              <option value="en">English</option>
+              <option value="es">Español</option>
+              <option value="de">Deutsch</option>
+              <option value="fr">Français</option>
+            </select>
+          </div>
+        </div>
 
-<header>
-    <div class="name">SIEBREN DE VAN DER SCHUEREN</div>
-    <div class="hamburger" onclick="toggleMenu()">&#9776;</div>
-    <nav id="navbar">		
-		<a href="index.html">HOME</a>
-		<a href="over-siebren.html">OVER SIEBREN</a>
-		<a href="producties.html">PRODUCTIES</a>
-		<a href="trainingen.html">TRAININGEN</a>
-		<a href="fotos.html">FOTO'S</a>
-		<a href="contact.html">CONTACT</a>
-	</nav>
-</header>
-
-<script>
-function toggleMenu() {
-    const navbar = document.getElementById('navbar');
-    navbar.classList.toggle('active');
-}
-</script>
-
-
-
-<div class="front-image-container">
-    <img src="images/SiebrenDeVanDerSchueren_WS_30625.jpg" alt="Front Image" class="front-image">
-    <div class="front-image-caption">
-        <strong>SIEBREN<br> DE VAN DER<br> SCHUEREN</strong><br>
-        <span class="subtitle">acteur in theater, trainingen en TV</span>
+        <nav aria-label="Primary">
+          <div class="nav-links">
+            <a href="#home" data-page="home" aria-current="page" id="navHome">HOME</a>
+            <a href="#portfolio" data-page="portfolio" aria-current="false" id="navPortfolio">PORTFOLIO</a>
+            <a href="#fotos" data-page="photos" aria-current="false" id="navPhotos">FOTO’S</a>
+          </div>
+        </nav>
+      </div>
     </div>
-</div>
+  </header>
+
+  <main class="container">
+    <!-- HOME -->
+    <section id="page-home" class="page is-active page-home" data-lang-key="home">
+      <div class="hero">
+        <div class="hero-grid">
+			<figure class="hero-photo">
+				<img
+					id="heroImage"
+					src="heroimages/foto-hero-1.jpg"
+					alt="Siebren de van der Schueren — portretfoto"
+					loading="eager"
+				/>
+			</figure>
+
+          <div class="hero-copy">
+            <h1 id="homeHeadline">Actor & Model — veelzijdig en ervaren</h1>
+            <p class="lede" id="homeSummary">
+              Siebren de van der Schueren is a versatile actor and model...
+            </p>
+
+            <div class="two-col">
+              <div class="panel">
+                <h2 id="factsTitle">Basis</h2>
+                <div class="facts">
+                  <div class="fact-row">
+                    <div class="fact-k" id="factHeight">Lengte</div>
+                    <div class="fact-v">193 cm</div>
+                  </div>
+                  <div class="fact-row">
+                    <div class="fact-k" id="factDob">Geboortedatum</div>
+                    <div class="fact-v">21 sept 1999</div>
+                  </div>
+                  <div class="fact-row">
+                    <div class="fact-k" id="factLanguages">Talen</div>
+                    <div class="fact-v" id="languagesValue">NL (C2), EN (C2), Spaans (B2), Duits (B1)</div>
+                  </div>
+                  <div class="fact-row">
+                    <div class="fact-k" id="factAvailability">Beschikbaarheid</div>
+                    <div class="fact-v" id="availabilityValue">EU & daarbuiten</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel contact">
+                <h2 id="contactTitle">Contact</h2>
+                <p class="lede" style="margin:0 0 10px;" id="contactNote">
+                  Voor casting en boekingen:
+                </p>
+                <p class="lede" style="margin:0 0 8px;">
+                  <span id="contactEmailLabel">Mail</span>:
+                  <a href="mailto:acteur@siebren.eu" id="contactEmail">acteur@siebren.eu</a>
+                </p>
+                <p class="lede" style="margin:0;">
+                  <span id="contactPhoneLabel">Telefoon</span>:
+                  <a href="tel:+31611582703" id="contactPhone">+316 11582703</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
 
 
-<div class="showreel">
-    <h1 class="title">Showreel</h1>
-    <iframe src="https://www.youtube.com/embed/sBoMvGya9fk?autoplay=1&mute=1&start=42&loop=1&rel=0" frameborder="0" allowfullscreen></iframe>
-</div>
+        <p class="section-title" id="showreelTitle">Showreel</p>		
+        <div class="panel" style="padding: 0;">
+          <div style="padding: 14px;">
+            <h2 id="showreelTitle">Showreel</h2>
+			<p class="lede" style="margin:0 0 12px;" id="showreelNote">
+              Embedded Vimeo showreel:
+            </p>
+			
+          </div>
+          <div style="padding: 0px 14px 18px;">
+            <div style="position:relative; padding-top:56.25%; border-top:1px solid #000; border-bottom:1px solid #000;">
+              <iframe
+				  title="Showreel"
+				  src="https://player.vimeo.com/video/1226694559?h=9e68d6514d&autoplay=0&muted=0&loop=0&controls=1&vimeo_logo=0&portrait=0&byline=0&title=0&share=0&like=0&watch_later=0&pip=0&transcript=0&unmute_button=0&playsinline=1"
+				  loading="lazy"
+				  style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+				  allow="autoplay; fullscreen; encrypted-media"
+				  referrerpolicy="strict-origin-when-cross-origin"
+				  allowfullscreen
+				></iframe>
+
+            </div>
+          </div>
+        </div>
+		
+
+		
+		<p class="section-title" id="photoSectionTitleHome">Foto’s</p>
 
 
+<!--
+        <div class="gallery" aria-label="Foto galerij">
+          <div class="thumb"><img src="foto-01.jpg" alt="Foto 1" loading="lazy"></div>
+          <div class="thumb"><img src="foto-02.jpg" alt="Foto 2" loading="lazy"></div>
+          <div class="thumb"><img src="foto-03.jpg" alt="Foto 3" loading="lazy"></div>
+        </div>
+		-->
+		
+		
+		
+      </div>
+    </section>
 
-<div class="producties">
-    <h1 class="title">Producties</h1>
-    <div class="gallery">
-        <div>
-            <img src="https://www.shakespearetheaterdiever.nl/UserFiles/AYLI/poster_AYLI.jpg" alt="Productie 8">
-            <div class="gallery-title"><strong>As You Like It</strong><br>2026<br><a href="https://www.shakespearetheaterdiever.nl/Kaartverkoop" target="_blank">tickets</a></div>
+    <!-- PORTFOLIO -->
+    <section id="page-portfolio" class="page page-portfolio">
+      <div class="hero">
+
+		<p class="section-title" id="portfolioTitleTop">Portfolio</p>
+
+        <div class="panel">
+		  <h2 id="portfolioFilmHeadline">Televisie/Film</h2>
+		  
+          <p class="lede" id="portfolioFilmText" style="margin:0;">
+            In één oogopslag: theater, film en televisie — plus modelwerk.
+          </p>
         </div>
-        <div>
-            <img src="https://www.shakespearetheaterdiever.nl/UserFiles/RJ24/poster-RJ.png" alt="Productie 2">
-            <div class="gallery-title"><strong>Romeo en Julia</strong><br>oktober 2026<br><a href="https://www.shakespearetheaterdiever.nl/Kaartverkoop" target="_blank">tickets</a></div>
+	
+        <div style="height:12px;"></div>
+	
+		<div class="panel">
+		  <h2 id="portfolioTheatreHeadline">Theater</h2>
+		  
+          <p class="lede" id="portfolioTheatreText" style="margin:0;">
+            In één oogopslag: theater, film en televisie — plus modelwerk.
+          </p>
         </div>
-        <div>
-            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fafbeelding.dvhn.nl%2Fdvhn%2Fincoming%2Fqjstrs-202202123355.jpg%2Falternates%2FLANDSCAPE_1920%2F202202123355.jpg&f=1&nofb=1&ipt=674eda8f2844e9b17f74e187fca9e5bb3c36d03edd0e3e2874100772d941c34b" alt="Productie 3">
-            <div class="gallery-title"><strong>Lang Leve de Familie</strong><br>mei + november 2026<br><a href="https://www.langlevedefamilie.nl/" target="_blank">tickets</a></div>
+		
+		<div style="height:12px;"></div>
+	
+		<div class="panel">
+		  <h2 id="portfolioModelHeadline">Model</h2>
+		  
+          <p class="lede" id="portfolioModelText" style="margin:0;">
+            In één oogopslag: theater, film en televisie — plus modelwerk.
+          </p>
         </div>
-		<div>
-            <img src="https://www.shakespearetheaterdiever.nl/UserFiles/Homlet/poster_mlogo.jpg" alt="Productie 1">
-            <div class="gallery-title"><strong>Hømlet</strong><br>2025</p></div>
+		
+		<!--
+
+        <div style="height:12px;"></div>
+
+        <div class="gallery" aria-label="Portfolio foto's">
+          <div class="thumb"><img src="foto-07.jpg" alt="Portfolio foto 7" loading="lazy"></div>
+          <div class="thumb"><img src="foto-08.jpg" alt="Portfolio foto 8" loading="lazy"></div>
+          <div class="thumb"><img src="foto-09.jpg" alt="Portfolio foto 9" loading="lazy"></div>
+          <div class="thumb"><img src="foto-10.jpg" alt="Portfolio foto 10" loading="lazy"></div>
+          <div class="thumb"><img src="foto-11.jpg" alt="Portfolio foto 11" loading="lazy"></div>
+          <div class="thumb"><img src="foto-12.jpg" alt="Portfolio foto 12" loading="lazy"></div>
         </div>
-        <div>
-            <img src="https://www.48hourfilm.com/storage/posters/48HFP%20Groningen%202024%20-%20FAMILIA%20ASESINA%20-%20Poster%20-%20file%201.jpg" alt="Productie 4">
-            <div class="gallery-title"><strong>Unspoken</strong><br>2024<br><a href="https://www.youtube.com/embed/sBoMvGya9fk?autoplay=1&rel=0" target="_blank">bekijk</a></div>
+		
+		-->
+
+		<div style="height:12px;"></div>
+	  
+	  <div class="panel contact">
+                <h2 id="contactTitlePortfolio">Contact</h2>
+                <p class="lede" style="margin:0 0 10px;" id="contactNotePortfolio">
+                  Voor casting en boekingen:
+                </p>
+                <p class="lede" style="margin:0 0 8px;">
+                  <span id="contactEmailLabelPortfolio">Mail</span>:
+                  <a href="mailto:acteur@siebren.eu" id="contactEmail">acteur@siebren.eu</a>
+                </p>
+                <p class="lede" style="margin:0;">
+                  <span id="contactPhoneLabelPortfolio">Telefoon</span>:
+                  <a href="tel:+31611582703" id="contactPhone">+316 11582703</a>
+                </p>
+              </div>
+
+
+<!--
+
+        <div style="height:12px;"></div>
+
+        <div class="panel">
+          <h2 id="portfolioExperienceTitle">Ervaring (kort)</h2>
+          <p class="lede" id="portfolioExperienceText" style="margin:0;">
+            Siebren de van der Schueren is a versatile actor and model...
+          </p>
         </div>
-        <div>
-            <img src="https://www.shakespearetheaterdiever.nl/UserFiles/WS/header-mobiel.jpg" alt="Productie 5">
-            <div class="gallery-title"><strong>Wintersprookje</strong><br>2024</p></div>
+
+        <div style="height:12px;"></div>
+
+        <p class="section-title" id="portfolioShowreelTitle">Showreel</p>
+        <div class="panel" style="padding: 0;">
+          <div style="padding: 14px;">
+            <p class="lede" style="margin:0;" id="portfolioShowreelNote">
+              Showreel embedded from YouTube.
+            </p>
+          </div>
+          <div style="padding: 14px 14px 18px;">
+            <div style="position:relative; padding-top:56.25%; border-top:1px solid #000; border-bottom:1px solid #000;">
+              <iframe
+                title="Showreel"
+                src="https://www.youtube.com/embed/sBoMvGya9fk?start=42"
+                loading="lazy"
+                style="position:absolute; top:0; left:0; width:100%; height:100%; border:0;"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
         </div>
-        <div>
-            <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fwww.mennoschreuder.nl%2Fwp-content%2Fuploads%2F2021%2F09%2FSchermafbeelding-2021-09-22-om-11.21.42-725x1024.png&f=1&nofb=1&ipt=df0c1bca95ffef0db099dd700af81517d296213f0cfe572ca0e38005bfbadb75" alt="Productie 6">
-            <div class="gallery-title"><strong>Broodkapje & een Stuk of Zeven Geitjes</strong><br>2023</div>
-        </div>
-        <div>
-            <img src="https://www.shakespearetheaterdiever.nl/UserFiles/posters-site-klein/AC-2023.jpg" alt="Productie 7">
-            <div class="gallery-title"><strong>Antonius & Cleopatra</strong><br>2023</p></div>
-        </div>
+		-->
+		
+      </div>
+    </section>
+
+    <!-- FOTO’S -->
+    <section id="page-photos" class="page page-photos">
+      
+	<!--	
+		<p class="section-title" id="photosTitleTop">FOTO’S</p>
+	
+      <div class="panel">
+        <h2 id="photosHeadline">Galerij</h2>
+        <p class="lede" id="photosText" style="margin:0;">
+          Selectie van portret- en modelbeelden. Vervang de bestandsnamen door je eigen foto’s (25 stuks).
+        </p>
+      </div>
+	  
+	   -->
+
+      <div style="height:12px;"></div>
+
+      <div class="gallery" aria-label="Alle foto’s">
+        <div class="thumb"><img src="images/foto-01.jpg" alt="Foto 1" loading="lazy"></div>
+        <div class="thumb"><img src="images/foto-02.jpg" alt="Foto 2" loading="lazy"></div>
+        <div class="thumb"><img src="images/foto-03.jpg" alt="Foto 3" loading="lazy"></div>
+        <div class="thumb"><img src="images/foto-04.jpg" alt="Foto 4" loading="lazy"></div>
+        <div class="thumb"><img src="images/foto-05.jpg" alt="Foto 5" loading="lazy"></div>
+        <div class="thumb"><img src="images/foto-06.jpg" alt="Foto 6" loading="lazy"></div>
+
+        <div class="thumb"><img src="images/foto-07.jpg" alt="Foto 7" loading="lazy"></div>
+        <div class="thumb"><img src="images/foto-08.jpg" alt="Foto 8" loading="lazy"></div>
+        <div class="thumb"><img src="images/foto-09.jpg" alt="Foto 9" loading="lazy"></div>
+        <div class="thumb"><img src="images/foto-10.jpg" alt="Foto 10" loading="lazy"></div>
+        <div class="thumb"><img src="images/foto-11.jpg" alt="Foto 11" loading="lazy"></div>
+        <div class="thumb"><img src="images/foto-12.jpg" alt="Foto 12" loading="lazy"></div>
+
+        <div class="thumb"><img src="images/foto-13.jpg" alt="Foto 13" loading="lazy"></div>
+        <div class="thumb"><img src="images/foto-14.jpg" alt="Foto 14" loading="lazy"></div>
+        <div class="thumb"><img src="images/foto-15.jpg" alt="Foto 15" loading="lazy"></div>
+        <div class="thumb"><img src="images/foto-16.jpg" alt="Foto 16" loading="lazy"></div>
+        <div class="thumb"><img src="images/foto-17.jpg" alt="Foto 17" loading="lazy"></div>
+        <div class="thumb"><img src="images/foto-18.jpg" alt="Foto 18" loading="lazy"></div>
+
+        <div class="thumb"><img src="images/foto-19.jpg" alt="Foto 19" loading="lazy"></div>
+        <div class="thumb"><img src="images/foto-20.jpg" alt="Foto 20" loading="lazy"></div>
+        <div class="thumb"><img src="images/foto-21.jpg" alt="Foto 21" loading="lazy"></div>
+		
+		<!--
+		
+        <div class="thumb"><img src="images/foto-22.jpg" alt="Foto 22" loading="lazy"></div>
+        <div class="thumb"><img src="images/foto-23.jpg" alt="Foto 23" loading="lazy"></div>
+        <div class="thumb"><img src="images/foto-24.jpg" alt="Foto 24" loading="lazy"></div>
+
+        <div class="thumb"><img src="images/foto-25.jpg" alt="Foto 25" loading="lazy"></div>
+		
+		-->
+		
+      </div>
+	  
+	  <div style="height:12px;"></div>
+	  
+	  <div class="panel contact">
+                <h2 id="contactTitleFotos">Contact</h2>
+                <p class="lede" style="margin:0 0 10px;" id="contactNoteFotos">
+                  Voor casting en boekingen:
+                </p>
+                <p class="lede" style="margin:0 0 8px;">
+                  <span id="contactEmailLabelFotos">Mail</span>:
+                  <a href="mailto:acteur@siebren.eu" id="contactEmail">acteur@siebren.eu</a>
+                </p>
+                <p class="lede" style="margin:0;">
+                  <span id="contactPhoneLabelFotos">Telefoon</span>:
+                  <a href="tel:+31611582703" id="contactPhone">+316 11582703</a>
+                </p>
+              </div>
+	  
+	  
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner" id="footerText">
+      © <span id="year">2026</span> — Actor & Model
     </div>
-</div>
+  </footer>
 
-<footer>
-    <nav>		
-		<a href="index.html">HOME</a>
-		<a href="over-siebren.html">OVER SIEBREN</a>
-		<a href="producties.html">PRODUCTIES</a>
-		<a href="trainingen.html">TRAININGEN</a>
-		<a href="fotos.html">FOTO'S</a>
-		<a href="contact.html">CONTACT</a>
-	</nav>
-    <p>&copy; 2025 Siebren de van der Schueren. Alle rechten voorbehouden.</p>
-</footer>
+  <script>
+	const heroImage = document.getElementById("heroImage");
 
-<meta name="title" content="Siebren de van der Schueren - Acteur | Theater, Film en Trainingen">
+	const heroPhotos = [
+		{
+		  src: "heroimages/foto-hero-1.jpg",
+		  alt: "Siebren de van der Schueren — portretfoto"
+		},
+		{
+		  src: "heroimages/foto-hero-2.jpg",
+		  alt: "Siebren de van der Schueren — portretfoto"
+		},
+		{
+		  src: "heroimages/foto-hero-3.jpg",
+		  alt: "Siebren de van der Schueren — portretfoto"
+		},
+		{
+		  src: "heroimages/foto-hero-4.jpg",
+		  alt: "Siebren de van der Schueren — portretfoto"
+		}
+	  ];
 
-<meta name="description" content="Bekijk mijn werk in theater en film en ontdek mijn trainingen in communicatie.">
+	  let currentPhoto = 0;
+
+	  // Foto's alvast laden zodat ze sneller verschijnen
+	  heroPhotos.forEach((photo) => {
+		const image = new Image();
+		image.src = photo.src;
+	  });
+
+	function changeHeroPhoto() {
+		currentPhoto = (currentPhoto + 1) % heroPhotos.length;
+
+		heroImage.classList.add("is-changing");
+
+		setTimeout(() => {
+		  heroImage.src = heroPhotos[currentPhoto].src;
+		  heroImage.alt = heroPhotos[currentPhoto].alt;
+		  heroImage.classList.remove("is-changing");
+		}, 300);
+	  }
+
+	  // Wissel iedere 7 seconden
+	  setInterval(changeHeroPhoto, 7000);
 	
-<script>
-  // Controleer of de URL eindigt op /index.html
-  if (window.location.pathname === '/index.html') {
-    // Verander de URL naar de root zonder de pagina te herladen
-    window.history.replaceState(null, '', '/');
-  }
-</script>
 	
+	const translations = {
+      nl: {
+        langLabel: "Taal",
+        brandRole: "Acteur & Model",
+        navHome: "HOME",
+        navPortfolio: "PORTFOLIO",
+        navPhotos: "FOTO’S",
+        homeHeadline: "Over mij",
+        homeSummary: "<strong>Siebren de van der Schueren</strong> is een veelzijdig acteur en model. Hij is bekend van zijn grote rollen bij het <strong>Shakespearetheater Diever</strong>, één van de grootste (openlucht)theaters van Nederland, waar hij al voor meer dan 130.000 bezoekers speelde. In 2024 werkte hij aan de film <strong>Unspoken</strong> (Asesina Productions), waarmee hij het 48Film Festival in Groningen won (Beste Film). Eerder was hij o.a. te zien in het theater <strong>Lang Leve de Familie</strong> (Theater van de Grond) en in de film <strong>Liek Achter de Badde</strong> (On Air Media). In 2026 werkte hij aan <strong>They Served With the Colors</strong> (Asesina Productions).\n\n",
+        factsTitle: "Basis",
+        factHeight: "Lengte",
+        factDob: "Geboortedatum",
+        factLanguages: "Talen",
+        factAvailability: "Beschikbaarheid",
+        languagesValue: "NL (C2), EN (C1), Spaans (B2), Duits (B1)",
+        availabilityValue: "EU & daarbuiten",
+        contactTitle: "Contact",
+        contactNote: "Voor casting en boekingen:",
+		contactEmailLabel: "Mail",
+        contactPhoneLabel: "Telefoon",
+		contactTitlePortfolio: "Contact",
+        contactNotePortfolio: "Voor casting en boekingen:",
+		contactEmailLabelPortfolio: "Mail",
+		contactPhoneLabelPortfolio: "Telefoon",
+		contactTitleFotos: "Contact",
+        contactNoteFotos: "Voor casting en boekingen:",
+		contactEmailLabelFotos: "Mail",
+		contactPhoneLabelFotos: "Telefoon",
+        photoSectionTitleHome: "",
+        showreelTitle: "",
+        showreelNote: "",
+        portfolioTitleTop: "",
+        portfolioFilmHeadline: "Televisie/Film",
+        portfolioFilmText: 
+						"<strong>2026</strong> <em>They Served With the Colors</em> (Asesina Productions, Regie: Jaap Broekstra) <em><mark>Najaar 2026</mark></em>\n\n" +
+						"<strong>2026</strong> <em>Mutable Oysters</em> (TBD, Regie: Samantha Pellarini) <em><mark>TBD</mark></em>\n\n" +
+						"<strong>2024</strong> <em>High 5</em> (ZEBDOS Productions, Regie: Zeb Bulthuis)\n\n" +
+						"<strong>2024</strong> <em>Unspoken</em> (Asesina Productions, Regie: Martin Bergmann)\n\n" +
+						"<strong>2024</strong> <em>Door de Bomen het Bos Niet Meer Zien</em> (FNSTR Productions, Regie: Jessa Feenstra)\n\n" +
+						"<strong>2022</strong> <em>Gespreksvaardigheden Noordhoff</em> (MSTRWRK Mediaproducties, Regie: Wouter Koopmans)\n\n" +
+						"<strong>2021</strong> <em>Tabula Rasa</em> (Albertus Magnus, Regie:  Tommy Reerink)\n\n" +
+						"<strong>2020</strong> <em>Presentatie Educatieve Methoden</em> (Koninklijke Boom Uitgevers, Regie: Jelle Buning)\n\n" +
+						"<strong>2019</strong> <em>Liek Achter de Badde</em> (On Air Media, Regie: Dirk de Jong)\n",						
+        portfolioTheatreHeadline: "Theater",
+		portfolioTheatreText: 
+						"<strong>2026</strong> <em>As You Like It</em> (Shakespearetheater Diever, Regie: Jack Nieborg) <em><mark>Speelt</mark></em>\n\n" +
+						"<strong>2026</strong> <em>De Sterke Wil</em> (Shakespearetheater Diever, Regie: Jack Nieborg) <em><mark>Verlengd tot 2027</mark></em>\n\n" +
+						"<strong>2025</strong> <em>Hømlet</em> (Shakespearetheater Diever, Regie: Jack Nieborg)\n\n" +
+						"<strong>2024</strong> <em>Wintersprookje</em> (Shakespearetheater Diever, Regie: Jack Nieborg)\n\n" +
+						"<strong>2023</strong> <em>Broodkapje & een Stuk of Zeven Geitjes</em> (o.a. Bert Visscher, TIS, Regie: Jack Nieborg)\n\n" +
+						"<strong>2023</strong> <em>Romeo & Julia</em> (Shakespearetheater Diever, Regie: Jack Nieborg) <em><mark>Verlengd tot 2026</mark></em>\n\n" +
+						"<strong>2023</strong> <em>Antonius & Cleopatra</em> (Shakespearetheater Diever, Regie: Jack Nieborg)\n\n" +
+						"<strong>2022</strong> <em>Lang Leve de Familie</em> (Theater van de Grond, Regie: Jack Nieborg) <em><mark>Verlengd tot 2026</mark></em>\n\n" +
+						"<strong>2022</strong> <em>De Koopman van Venetië</em> (Shakespearetheater Diever, Regie: Jack Nieborg)\n\n" +
+						"<strong>2021</strong> <em>De Miraculeuze Comeback van het Voormalig Verzet</em> (Speelgoud Theater, Regie: Jack Nieborg)\n\n" +
+						"<strong>2020-2023</strong> <em>Midzomernachtsdroom</em> (Shakespearetheater Diever, Regie: Jack Nieborg)\n\n" +
+						"<strong>2020</strong> <em>Verzet!</em> (Speelgoud Theater, Regie: Jack Nieborg)\n\n" +
+						"<strong>2019</strong> <em>Totally Shifted</em> (Lustrumvoorstelling RUG, Regie: Jack Nieborg)\n\n" +
+						"<strong>2019</strong> <em>En Verlos Ons Van het Kwade</em> (Groninger Studententoneel, Regie: Tim van der Molen)\n\n" +
+						"<strong>2018</strong> <em>Lord Of the Flies</em> (Idiomotor, Regie: Dio van der Velden)\n\n" +
+						"<strong>2018</strong> <em>De Vrouw Met de Baard</em> (Groninger Studententoneel, Regie: Jelle Buning)\n\n" +
+						"<strong>2016</strong> <em>De Mensenhater</em> (Eloquentia, Regie: Joke Holwerda)\n\n" +
+						"<strong>2015</strong> <em>SHOW!</em> (Eloquentia, Regie: Joke Holwerda)\n",
+		portfolioModelHeadline: "Model",
+		portfolioModelText: 						
+						"<strong>2026</strong> <em>Beeldcampagne 'As You Like It'</em> (Shakespearetheater Diever)\n\n" +
+						"<strong>2025</strong> <em>Willex Bags For Bikes</em> (Pointed N.V.)\n\n" +
+						"<strong>2025</strong> <em>Beeldcampagne 'De Noordelijke Banenbeurs'</em> (DRT Events)\n",
+		portfolioExperienceTitle: "Ervaring (kort)",
+        portfolioExperienceText:
+          "Siebren de van der Schueren is een veelzijdig acteur en model. Hij is bekend van zijn grote rollen bij het Shakespearetheater Diever, één van de grootste (openlucht)theaters van Nederland, waar hij al voor meer dan 120.000 bezoekers speelde. In 2024 werkte hij aan de film Unspoken (Asesina Productions, regie: Martin Bergmann), waarmee hij het 48Film Festival in Groningen won (Beste Film). Eerder was hij o.a. te zien in theater Broodkapje (2023, TIS, regie: Jack Nieborg) en in de film Liek Achter de Badde (2019, On Air Media, regie: Dirk de Jong). In 2026 werkte hij aan They Serve With the Colors (Asesina Productions, regie: Jaap Broekstra).",
+        portfolioShowreelTitle: "Showreel",
+        portfolioShowreelNote: "Showreel embedded from YouTube.",
+        photosTitleTop: "",
+        photosHeadline: "Galerij",
+        photosText: "Selectie van portret- en modelbeelden. Vervang de bestandsnamen door je eigen foto’s (25 stuks).",
+        footerText: "© 2026 — Acteur & Model"
+      },
+      en: {
+        langLabel: "Language",
+        brandRole: "Actor & Model",
+        navHome: "HOME",
+        navPortfolio: "PORTFOLIO",
+        navPhotos: "PHOTOS",
+        homeHeadline: "About me",
+        homeSummary: "<strong>Siebren de van der Schueren</strong> is a versatile actor and model. He is known for his leading roles at the <strong>Shakespearetheater Diever</strong>, one of the largest (open-air) theatres in the Netherlands, where he has performed for more than 130,000 audience members. In 2024, he worked on the film <strong>Unspoken</strong> (Asesina Productions), which won Best Film at the 48Film Festival in Groningen. Previously, he appeared in, amongst other things, the play <strong>Lang Leve de Familie</strong> (Theater van de Grond) and the film <strong>Liek Achter de Badde</strong> (On Air Media). In 2026, he worked on <strong>They Serve With the Colors</strong> (Asesina Productions).\n\n",
+        factsTitle: "Basics",
+        factHeight: "Height",
+        factDob: "Date of birth",
+        factLanguages: "Languages",
+        factAvailability: "Availability",
+        languagesValue: "NL (C2), EN (C1), Spanish (B2), German (B1)",
+        availabilityValue: "EU & beyond",
+        contactTitle: "Contact",
+        contactNote: "For casting and bookings:",
+		contactEmailLabel: "Email",
+        contactPhoneLabel: "Phone",
+		contactTitlePortfolio: "Contact",
+        contactNotePortfolio: "For casting and bookings:",
+		contactEmailLabelPortfolio: "Email",
+		contactPhoneLabelPortfolio: "Phone",
+		contactTitleFotos: "Contact",
+        contactNoteFotos: "For casting and bookings:",
+		contactEmailLabelFotos: "Email",
+		contactPhoneLabelFotos: "Phone",
+        photoSectionTitleHome: "",
+        showreelTitle: "",
+        showreelNote: "",
+        portfolioTitleTop: "",
+        portfolioFilmHeadline: "Television/Film",
+        portfolioFilmText:
+						"<strong>2026</strong> <em>They Served With the Colors</em> (Asesina Productions, Director: Jaap Broekstra) <em><mark>Fall 2026</mark></em>\n\n" +
+						"<strong>2026</strong> <em>Mutable Oysters</em> (TBD, Director: Samantha Pellarini) <em><mark>TBD</mark></em>\n\n" +
+						"<strong>2024</strong> <em>High 5</em> (ZEBDOS Productions, Director: Zeb Bulthuis)\n\n" +
+						"<strong>2024</strong> <em>Unspoken</em> (Asesina Productions, Director: Martin Bergmann)\n\n" +
+						"<strong>2024</strong> <em>Door de Bomen het Bos Niet Meer Zien</em> (FNSTR Productions, Director: Jessa Feenstra)\n\n" +
+						"<strong>2022</strong> <em>Gespreksvaardigheden Noordhoff</em> (MSTRWRK Mediaproducties, Director: Wouter Koopmans)\n\n" +
+						"<strong>2021</strong> <em>Tabula Rasa</em> (Albertus Magnus, Director:  Tommy Reerink)\n\n" +
+						"<strong>2020</strong> <em>Presentatie Educatieve Methoden</em> (Koninklijke Boom Uitgevers, Director: Jelle Buning)\n\n" +
+						"<strong>2019</strong> <em>Liek Achter de Badde</em> (On Air Media, Director: Dirk de Jong)\n",
+		portfolioTheatreHeadline: "Theatre",
+		portfolioTheatreText: 
+						"<strong>2026</strong> <em>As You Like It</em> (Shakespearetheater Diever, Director: Jack Nieborg) <em><mark>Currently running</mark></em>\n\n" +
+						"<strong>2026</strong> <em>De Sterke Wil</em> (Shakespearetheater Diever, Director: Jack Nieborg) <em><mark>Extended through 2027</mark></em>\n\n" +
+						"<strong>2025</strong> <em>Hømlet</em> (Shakespearetheater Diever, Director: Jack Nieborg)\n\n" +
+						"<strong>2024</strong> <em>Wintersprookje</em> (Shakespearetheater Diever, Director: Jack Nieborg)\n\n" +
+						"<strong>2023</strong> <em>Broodkapje & een Stuk of Zeven Geitjes</em> (TIS, Director: Jack Nieborg)\n\n" +
+						"<strong>2023</strong> <em>Romeo & Julia</em> (Shakespearetheater Diever, Director: Jack Nieborg) <em><mark>Extended through 2026</mark></em>\n\n" +
+						"<strong>2023</strong> <em>Antonius & Cleopatra</em> (Shakespearetheater Diever, Director: Jack Nieborg)\n\n" +
+						"<strong>2022</strong> <em>Lang Leve de Familie</em> (Theater van de Grond, Director: Jack Nieborg) <em><mark>Extended through 2026</mark></em>\n\n" +
+						"<strong>2022</strong> <em>De Koopman van Venetië</em> (Shakespearetheater Diever, Director: Jack Nieborg)\n\n" +
+						"<strong>2021</strong> <em>De Miraculeuze Comeback van het Voormalig Verzet</em> (Speelgoud Theater, Director: Jack Nieborg)\n\n" +
+						"<strong>2020-2023</strong> <em>Midzomernachtsdroom</em> (Shakespearetheater Diever, Director: Jack Nieborg)\n\n" +
+						"<strong>2020</strong> <em>Verzet!</em> (Speelgoud Theater, Director: Jack Nieborg)\n\n" +
+						"<strong>2019</strong> <em>Totally Shifted</em> (Lustrumvoorstelling RUG, Director: Jack Nieborg)\n\n" +
+						"<strong>2019</strong> <em>En Verlos Ons Van het Kwade</em> (Groninger Studententoneel, Director: Tim van der Molen)\n\n" +
+						"<strong>2018</strong> <em>Lord Of the Flies</em> (Idiomotor, Director: Dio van der Velden)\n\n" +
+						"<strong>2018</strong> <em>De Vrouw Met de Baard</em> (Groninger Studententoneel, Director: Jelle Buning)\n\n" +
+						"<strong>2016</strong> <em>De Mensenhater</em> (Eloquentia, Director: Joke Holwerda)\n\n" +
+						"<strong>2015</strong> <em>SHOW!</em> (Eloquentia, Director: Joke Holwerda)\n",
+		portfolioModelHeadline: "Model",
+		portfolioModelText: 
+						"<strong>2026</strong> <em>Visual campaign 'As You Like It'</em> (Shakespearetheater Diever)\n\n" +
+						"<strong>2025</strong> <em>Willex Bags For Bikes</em> (Pointed N.V.)\n\n" +
+						"<strong>2025</strong> <em>Visual campaign 'De Noordelijke Banenbeurs'</em> (DRT Events)\n",
+        portfolioExperienceTitle: "Experience (short)",
+        portfolioExperienceText:
+          "Siebren de van der Schueren is a versatile actor and model. He is known for his leading roles at the Shakespearetheater Diever, one of the largest (open-air) theatres in the Netherlands, where he has performed for more than 120,000 audience members. In 2024, he worked on the film Unspoken (Asesina Productions, director: Martin Bergmann), which won Best Film at the 48Film Festival in Groningen. Previously, he appeared in, amongst other things, the play Broodkapje (2023, TIS, director: Jack Nieborg) and the film Liek Achter de Badde (2019, On Air Media, director: Dirk de Jong). In 2026, he worked on They Serve With the Colors (Asesina Productions, director: Jaap Broekstra).",
+        portfolioShowreelTitle: "",
+        portfolioShowreelNote: "Showreel embedded from YouTube.",
+        photosTitleTop: "",
+        photosHeadline: "Gallery",
+        photosText: "A selection of portrait and modelling images. Replace the file names with your own photos (25 pieces).",
+        footerText: "© 2026 — Actor & Model"
+      },
+      es: {
+        langLabel: "Idioma",
+        brandRole: "Actor y Modelo",
+        navHome: "INICIO",
+        navPortfolio: "PORTFOLIO",
+        navPhotos: "FOTOS",
+        homeHeadline: "Sobre mí",
+        homeSummary: "<strong>Siebren de van der Schueren</strong> es un actor y modelo polifacético. Es conocido por sus papeles protagonistas en el <strong>Shakespearetheater Diever</strong>, uno de los teatros (al aire libre) más grandes de los Países Bajos, donde ya ha actuado ante más de 130 000 espectadores. En 2024 participó en la película <strong>Unspoken</strong> (Asesina Productions), con la que ganó el 48Film Festival de Groninga (Mejor Película). Anteriormente, participó, entre otros, en la obra de teatro <strong>Lang Leve de Familie</strong> (Theater van de Grond) y en la película <strong>Liek Achter de Badde</strong> (On Air Media). En 2026 trabajó en <strong>They Served With the Colors</strong> (Asesina Productions).\n\n",
+        factsTitle: "Datos básicos",
+        factHeight: "Altura",
+        factDob: "Fecha de nacimiento",
+        factLanguages: "Idiomas",
+        factAvailability: "Disponibilidad",
+        languagesValue: "NL (C2), EN (C1), Español (B2), Alemán (B1)",
+        availabilityValue: "UE y más allá",
+        contactTitle: "Contacto",
+        contactNote: "Para casting y reservas:",
+        contactEmailLabel: "Correo",
+        contactPhoneLabel: "Teléfono",
+		contactTitlePortfolio: "Contacto",
+        contactNotePortfolio: "Para casting y reservas:",
+		contactEmailLabelPortfolio: "Correo",
+		contactPhoneLabelPortfolio: "Teléfono",
+		contactTitleFotos: "Contacto",
+        contactNoteFotos: "Para casting y reservas:",
+		contactEmailLabelFotos: "Correo",
+		contactPhoneLabelFotos: "Teléfono",
+        photoSectionTitleHome: "",
+        showreelTitle: "",
+        showreelNote: "",
+        portfolioTitleTop: "",
+        portfolioFilmHeadline: "Televisión/Cine",
+        portfolioFilmText: 
+						"<strong>2026</strong> <em>They Served With the Colors</em> (Asesina Productions, Dirección: Jaap Broekstra) <em><mark>Otoño de 2026</mark></em>\n\n" +
+						"<strong>2026</strong> <em>Mutable Oysters</em> (TBD, Dirección: Samantha Pellarini) <em><mark>TBD</mark></em>\n\n" +
+						"<strong>2024</strong> <em>High 5</em> (ZEBDOS Productions, Dirección: Zeb Bulthuis)\n\n" +
+						"<strong>2024</strong> <em>Unspoken</em> (Asesina Productions, Dirección: Martin Bergmann)\n\n" +
+						"<strong>2024</strong> <em>Door de Bomen het Bos Niet Meer Zien</em> (FNSTR Productions, Dirección: Jessa Feenstra)\n\n" +
+						"<strong>2022</strong> <em>Gespreksvaardigheden Noordhoff</em> (MSTRWRK Mediaproducties, Dirección: Wouter Koopmans)\n\n" +
+						"<strong>2021</strong> <em>Tabula Rasa</em> (Albertus Magnus, Dirección:  Tommy Reerink)\n\n" +
+						"<strong>2020</strong> <em>Presentatie Educatieve Methoden</em> (Koninklijke Boom Uitgevers, Dirección: Jelle Buning)\n\n" +
+						"<strong>2019</strong> <em>Liek Achter de Badde</em> (On Air Media, Dirección: Dirk de Jong)\n",
+		portfolioTheatreHeadline: "Teatro",
+		portfolioTheatreText: 
+						"<strong>2026</strong> <em>As You Like It</em> (Shakespearetheater Diever, Dirección: Jack Nieborg) <em><mark>En cartelera</mark></em>\n\n" +
+						"<strong>2026</strong> <em>De Sterke Wil</em> (Shakespearetheater Diever, Dirección: Jack Nieborg) <em><mark>Prorrogada hasta 2027</mark></em>\n\n" +
+						"<strong>2025</strong> <em>Hømlet</em> (Shakespearetheater Diever, Dirección: Jack Nieborg)\n\n" +
+						"<strong>2024</strong> <em>Wintersprookje</em> (Shakespearetheater Diever, Dirección: Jack Nieborg)\n\n" +
+						"<strong>2023</strong> <em>Broodkapje & een Stuk of Zeven Geitjes</em> (TIS, Dirección: Jack Nieborg)\n\n" +
+						"<strong>2023</strong> <em>Romeo & Julia</em> (Shakespearetheater Diever, Dirección: Jack Nieborg) <em><mark>Prorrogada hasta 2026</mark></em>\n\n" +
+						"<strong>2023</strong> <em>Antonius & Cleopatra</em> (Shakespearetheater Diever, Dirección: Jack Nieborg)\n\n" +
+						"<strong>2022</strong> <em>Lang Leve de Familie</em> (Theater van de Grond, Dirección: Jack Nieborg) <em><mark>Prorrogada hasta 2026</mark></em>\n\n" +
+						"<strong>2022</strong> <em>De Koopman van Venetië</em> (Shakespearetheater Diever, Dirección: Jack Nieborg)\n\n" +
+						"<strong>2021</strong> <em>De Miraculeuze Comeback van het Voormalig Verzet</em> (Speelgoud Theater, Dirección: Jack Nieborg)\n\n" +
+						"<strong>2020-2023</strong> <em>Midzomernachtsdroom</em> (Shakespearetheater Diever, Dirección: Jack Nieborg)\n\n" +
+						"<strong>2020</strong> <em>Verzet!</em> (Speelgoud Theater, Dirección: Jack Nieborg)\n\n" +
+						"<strong>2019</strong> <em>Totally Shifted</em> (Lustrumvoorstelling RUG, Dirección: Jack Nieborg)\n\n" +
+						"<strong>2019</strong> <em>En Verlos Ons Van het Kwade</em> (Groninger Studententoneel, Dirección: Tim van der Molen)\n\n" +
+						"<strong>2018</strong> <em>Lord Of the Flies</em> (Idiomotor, Dirección: Dio van der Velden)\n\n" +
+						"<strong>2018</strong> <em>De Vrouw Met de Baard</em> (Groninger Studententoneel, Dirección: Jelle Buning)\n\n" +
+						"<strong>2016</strong> <em>De Mensenhater</em> (Eloquentia, Dirección: Joke Holwerda)\n\n" +
+						"<strong>2015</strong> <em>SHOW!</em> (Eloquentia, Dirección: Joke Holwerda)\n",
+		portfolioModelHeadline: "Modelo",
+		portfolioModelText: 
+						"<strong>2026</strong> <em>Campaña publicitaria 'As You Like It'</em> (Shakespearetheater Diever)\n\n" +
+						"<strong>2025</strong> <em>Willex Bags For Bikes</em> (Pointed N.V.)\n\n" +
+						"<strong>2025</strong> <em>Campaña publicitaria 'De Noordelijke Banenbeurs'</em> (DRT Events)\n",
+        portfolioExperienceTitle: "Experiencia (breve)",
+        portfolioExperienceText:
+          "Siebren de la van der Schueren es un actor y modelo polifacético. Es conocido por sus papeles protagonistas en el Shakespearetheater Diever, uno de los teatros (al aire libre) más grandes de los Países Bajos, donde ya ha actuado ante más de 120 000 espectadores. En 2024 participó en la película Unspoken (Asesina Productions, dirección: Martin Bergmann), con la que ganó el 48Film Festival de Groninga (Mejor Película). Anteriormente, participó, entre otros, en la obra de teatro Broodkapje (2023, TIS, dirección: Jack Nieborg) y en la película Liek Achter de Badde (2019, On Air Media, dirección: Dirk de Jong). En 2026 trabajó en They Serve With the Colors (Asesina Productions, dirección: Jaap Broekstra).",
+        portfolioShowreelTitle: "",
+        portfolioShowreelNote: "Showreel incrustado desde YouTube.",
+        photosTitleTop: "",
+        photosHeadline: "Galería",
+        photosText: "Selección de retratos e imágenes de modelaje. Sustituye los nombres de archivo por tus fotos (25).",
+        footerText: "© 2026 — Actor y Modelo"
+      },
+      de: {
+        langLabel: "Sprache",
+        brandRole: "Schauspieler & Model",
+        navHome: "START",
+        navPortfolio: "PORTFOLIO",
+        navPhotos: "FOTOS",
+        homeHeadline: "Über mich",
+        homeSummary: "<strong>Siebren de van der Schueren</strong> ist ein vielseitiger Schauspieler und Model. Bekannt ist er durch seine Hauptrollen am <strong>Shakespearetheater Diever</strong>, einem der größten (Freiluft-)Theater der Niederlande, wo er bereits vor mehr als 130.000 Zuschauern auftrat. Im Jahr 2024 wirkte er an dem Film <strong>Unspoken</strong> (Asesina Productions) mit, mit dem er das 48Film Festival in Groningen gewann (Bester Film). Zuvor war er unter anderem im Theaterstück <strong>Lang Leve de Familie</strong> (Theater van de Grond) und im Film <strong>Liek Achter de Badde</strong> (On Air Media) zu sehen. Im Jahr 2026 arbeitete er an <strong>They Served With the Colors</strong> (Asesina Productions).\n\n",
+        factsTitle: "Basis",
+        factHeight: "Größe",
+        factDob: "Geburtsdatum",
+        factLanguages: "Sprachen",
+        factAvailability: "Verfügbarkeit",
+        languagesValue: "NL (C2), EN (C1), Deutsch (B1), Spanisch (B2)",
+        availabilityValue: "EU & darüber hinaus",
+        contactTitle: "Kontakt",
+        contactNote: "Für Casting und Buchungen:",
+        contactEmailLabel: "E-Mail",
+        contactPhoneLabel: "Telefon",
+		contactTitlePortfolio: "Kontakt",
+        contactNotePortfolio: "Für Casting und Buchungen:",
+		contactEmailLabelPortfolio: "E-Mail",
+		contactPhoneLabelPortfolio: "Telefon",
+		contactTitleFotos: "Kontakt",
+        contactNoteFotos: "Für Casting und Buchungen:",
+		contactEmailLabelFotos: "E-Mail",
+		contactPhoneLabelFotos: "Telefon",
+        photoSectionTitleHome: "",
+        showreelTitle: "",
+        showreelNote: "",
+        portfolioTitleTop: "",
+        portfolioFilmHeadline: "Fernsehen/Film",
+        portfolioFilmText: 
+						"<strong>2026</strong> <em>They Served With the Colors</em> (Asesina Productions, Regie: Jaap Broekstra) <em><mark>Herbst 2026</mark></em>\n\n" +
+						"<strong>2026</strong> <em>Mutable Oysters</em> (TBD, Regie: Samantha Pellarini) <em><mark>TBD</mark></em>\n\n" +
+						"<strong>2024</strong> <em>High 5</em> (ZEBDOS Productions, Regie: Zeb Bulthuis)\n\n" +
+						"<strong>2024</strong> <em>Unspoken</em> (Asesina Productions, Regie: Martin Bergmann)\n\n" +
+						"<strong>2024</strong> <em>Door de Bomen het Bos Niet Meer Zien</em> (FNSTR Productions, Regie: Jessa Feenstra)\n\n" +
+						"<strong>2022</strong> <em>Gespreksvaardigheden Noordhoff</em> (MSTRWRK Mediaproducties, Regie: Wouter Koopmans)\n\n" +
+						"<strong>2021</strong> <em>Tabula Rasa</em> (Albertus Magnus, Regie:  Tommy Reerink)\n\n" +
+						"<strong>2020</strong> <em>Presentatie Educatieve Methoden</em> (Koninklijke Boom Uitgevers, Regie: Jelle Buning)\n\n" +
+						"<strong>2019</strong> <em>Liek Achter de Badde</em> (On Air Media, Regie: Dirk de Jong)\n",
+		portfolioTheatreHeadline: "Theater",
+		portfolioTheatreText: 
+						"<strong>2026</strong> <em>As You Like It</em> (Shakespearetheater Diever, Regie: Jack Nieborg) <em><mark>Läuft</mark></em>\n\n" +
+						"<strong>2026</strong> <em>De Sterke Wil</em> (Shakespearetheater Diever, Regie: Jack Nieborg) <em><mark>Verlängert bis 2027</mark></em>\n\n" +
+						"<strong>2025</strong> <em>Hømlet</em> (Shakespearetheater Diever, Regie: Jack Nieborg)\n\n" +
+						"<strong>2024</strong> <em>Wintersprookje</em> (Shakespearetheater Diever, Regie: Jack Nieborg)\n\n" +
+						"<strong>2023</strong> <em>Broodkapje & een Stuk of Zeven Geitjes</em> (TIS, Regie: Jack Nieborg)\n\n" +
+						"<strong>2023</strong> <em>Romeo & Julia</em> (Shakespearetheater Diever, Regie: Jack Nieborg) <em><mark>Verlängert bis 2026</mark></em>\n\n" +
+						"<strong>2023</strong> <em>Antonius & Cleopatra</em> (Shakespearetheater Diever, Regie: Jack Nieborg)\n\n" +
+						"<strong>2022</strong> <em>Lang Leve de Familie</em> (Theater van de Grond, Regie: Jack Nieborg) <em><mark>Verlängert bis 2026</mark></em>\n\n" +
+						"<strong>2022</strong> <em>De Koopman van Venetië</em> (Shakespearetheater Diever, Regie: Jack Nieborg)\n\n" +
+						"<strong>2021</strong> <em>De Miraculeuze Comeback van het Voormalig Verzet</em> (Speelgoud Theater, Regie: Jack Nieborg)\n\n" +
+						"<strong>2020-2023</strong> <em>Midzomernachtsdroom</em> (Shakespearetheater Diever, Regie: Jack Nieborg)\n\n" +
+						"<strong>2020</strong> <em>Verzet!</em> (Speelgoud Theater, Regie: Jack Nieborg)\n\n" +
+						"<strong>2019</strong> <em>Totally Shifted</em> (Lustrumvoorstelling RUG, Regie: Jack Nieborg)\n\n" +
+						"<strong>2019</strong> <em>En Verlos Ons Van het Kwade</em> (Groninger Studententoneel, Regie: Tim van der Molen)\n\n" +
+						"<strong>2018</strong> <em>Lord Of the Flies</em> (Idiomotor, Regie: Dio van der Velden)\n\n" +
+						"<strong>2018</strong> <em>De Vrouw Met de Baard</em> (Groninger Studententoneel, Regie: Jelle Buning)\n\n" +
+						"<strong>2016</strong> <em>De Mensenhater</em> (Eloquentia, Regie: Joke Holwerda)\n\n" +
+						"<strong>2015</strong> <em>SHOW!</em> (Eloquentia, Regie: Joke Holwerda)\n",
+		portfolioModelHeadline: "Model",
+		portfolioModelText: 
+						"<strong>2026</strong> <em>Bildkampagne 'As You Like It'</em> (Shakespearetheater Diever)\n\n" +
+						"<strong>2025</strong> <em>Willex Bags For Bikes</em> (Pointed N.V.)\n\n" +
+						"<strong>2025</strong> <em>Bildkampagne 'De Noordelijke Banenbeurs'</em> (DRT Events)\n",
+        portfolioExperienceTitle: "Erfahrung (kurz)",
+        portfolioExperienceText:
+          "Siebren de van der Schueren ist ein vielseitiger Schauspieler und Model. Bekannt ist er durch seine Hauptrollen am Shakespearetheater Diever, einem der größten (Freiluft-)Theater der Niederlande, wo er bereits vor mehr als 120.000 Zuschauern auftrat. Im Jahr 2024 wirkte er an dem Film Unspoken (Asesina Productions, Regie: Martin Bergmann) mit, mit dem er das 48Film Festival in Groningen gewann (Bester Film). Zuvor war er unter anderem im Theaterstück Broodkapje (2023, TIS, Regie: Jack Nieborg) und im Film Liek Achter de Badde (2019, On Air Media, Regie: Dirk de Jong) zu sehen. Im Jahr 2026 arbeitete er an They Serve With the Colors (Asesina Productions, Regie: Jaap Broekstra).",
+        portfolioShowreelTitle: "",
+        portfolioShowreelNote: "Showreel eingebettet von YouTube.",
+        photosTitleTop: "",
+        photosHeadline: "Galerie",
+        photosText: "Auswahl an Portrait- und Modelbildern. Ersetze die Dateinamen durch deine eigenen Fotos (25).",
+        footerText: "© 2026 — Schauspieler & Model"
+      },
+      fr: {
+        langLabel: "Langue",
+        brandRole: "Acteur et Mannequin",
+        navHome: "ACCUEIL",
+        navPortfolio: "PORTFOLIO",
+        navPhotos: "PHOTOS",
+        homeHeadline: "À propos de moi",
+        homeSummary: "<strong>Siebren de van der Schueren</strong> est un acteur et mannequin aux multiples talents. Il s'est fait connaître grâce à ses grands rôles au <strong>Shakespearetheater Diever</strong>, l'un des plus grands théâtres (en plein air) des Pays-Bas, où il s'est déjà produit devant plus de 130 000 spectateurs. En 2024, il a participé au film <strong>Unspoken</strong> (Asesina Productions), avec lequel il a remporté le prix du meilleur film au 48Film Festival de Groningue. Auparavant, il avait notamment joué dans la pièce <strong>Lang Leve de Familie</strong> (Theater van de Grond) et dans le film <strong>Liek Achter de Badde</strong> (On Air Media). En 2026, il a participé au film <strong>They Served With the Colors</strong> (Asesina Productions).\n\n",
+        factsTitle: "Infos de base",
+        factHeight: "Taille",
+        factDob: "Date de naissance",
+        factLanguages: "Langues",
+        factAvailability: "Disponibilité",
+        languagesValue: "NL (C2), EN (C1), Espagnol (B2), Allemand (B1)",
+        availabilityValue: "UE & au-delà",
+        contactTitle: "Contact",
+        contactNote: "Pour casting et réservations :",
+        contactEmailLabel: "Email",
+        contactPhoneLabel: "Téléphone",
+		contactTitlePortfolio: "Contact",
+        contactNotePortfolio: "Pour casting et réservations :",
+		contactEmailLabelPortfolio: "Email",
+		contactPhoneLabelPortfolio: "Téléphone",
+		contactTitleFotos: "Contact",
+        contactNoteFotos: "Pour casting et réservations :",
+		contactEmailLabelFotos: "Email",
+		contactPhoneLabelFotos: "Téléphone",
+        photoSectionTitleHome: "",
+        showreelTitle: "",
+        showreelNote: "",
+        portfolioTitleTop: "",
+        portfolioFilmHeadline: "Télévision/Cinéma",
+        portfolioFilmText: 
+						"<strong>2026</strong> <em>They Served With the Colors</em> (Asesina Productions, Mise en scène: Jaap Broekstra) <em><mark>Automne 2026</mark></em>\n\n" +
+						"<strong>2026</strong> <em>Mutable Oysters</em> (TBD, Mise en scène: Samantha Pellarini) <em><mark>TBD</mark></em>\n\n" +
+						"<strong>2024</strong> <em>High 5</em> (ZEBDOS Productions, Mise en scène: Zeb Bulthuis)\n\n" +
+						"<strong>2024</strong> <em>Unspoken</em> (Asesina Productions, Mise en scène: Martin Bergmann)\n\n" +
+						"<strong>2024</strong> <em>Door de Bomen het Bos Niet Meer Zien</em> (FNSTR Productions, Mise en scène: Jessa Feenstra)\n\n" +
+						"<strong>2022</strong> <em>Gespreksvaardigheden Noordhoff</em> (MSTRWRK Mediaproducties, Mise en scène: Wouter Koopmans)\n\n" +
+						"<strong>2021</strong> <em>Tabula Rasa</em> (Albertus Magnus, Mise en scène:  Tommy Reerink)\n\n" +
+						"<strong>2020</strong> <em>Presentatie Educatieve Methoden</em> (Koninklijke Boom Uitgevers, Mise en scène: Jelle Buning)\n\n" +
+						"<strong>2019</strong> <em>Liek Achter de Badde</em> (On Air Media, Mise en scène: Dirk de Jong)\n",
+		portfolioTheatreHeadline: "Théâtre",
+		portfolioTheatreText: 
+						"<strong>2026</strong> <em>As You Like It</em> (Shakespearetheater Diever, Mise en scène: Jack Nieborg) <em><mark>À l'affiche</mark></em>\n\n" +
+						"<strong>2026</strong> <em>De Sterke Wil</em> (Shakespearetheater Diever, Mise en scène: Jack Nieborg) <em><mark>Prolongé jusqu'en 2027</mark></em>\n\n" +
+						"<strong>2025</strong> <em>Hømlet</em> (Shakespearetheater Diever, Mise en scène: Jack Nieborg)\n\n" +
+						"<strong>2024</strong> <em>Wintersprookje</em> (Shakespearetheater Diever, Mise en scène: Jack Nieborg)\n\n" +
+						"<strong>2023</strong> <em>Broodkapje & een Stuk of Zeven Geitjes</em> (TIS, Mise en scène: Jack Nieborg)\n\n" +
+						"<strong>2023</strong> <em>Romeo & Julia</em> (Shakespearetheater Diever, Mise en scène: Jack Nieborg) <em><mark>Prolongé jusqu'en 2026</mark></em>\n\n" +
+						"<strong>2023</strong> <em>Antonius & Cleopatra</em> (Shakespearetheater Diever, Mise en scène: Jack Nieborg)\n\n" +
+						"<strong>2022</strong> <em>Lang Leve de Familie</em> (Theater van de Grond, Mise en scène: Jack Nieborg) <em><mark>Prolongé jusqu'en 2026</mark></em>\n\n" +
+						"<strong>2022</strong> <em>De Koopman van Venetië</em> (Shakespearetheater Diever, Mise en scène: Jack Nieborg)\n\n" +
+						"<strong>2021</strong> <em>De Miraculeuze Comeback van het Voormalig Verzet</em> (Speelgoud Theater, Mise en scène: Jack Nieborg)\n\n" +
+						"<strong>2020-2023</strong> <em>Midzomernachtsdroom</em> (Shakespearetheater Diever, Mise en scène: Jack Nieborg)\n\n" +
+						"<strong>2020</strong> <em>Verzet!</em> (Speelgoud Theater, Mise en scène: Jack Nieborg)\n\n" +
+						"<strong>2019</strong> <em>Totally Shifted</em> (Lustrumvoorstelling RUG, Mise en scène: Jack Nieborg)\n\n" +
+						"<strong>2019</strong> <em>En Verlos Ons Van het Kwade</em> (Groninger Studententoneel, Mise en scène: Tim van der Molen)\n\n" +
+						"<strong>2018</strong> <em>Lord Of the Flies</em> (Idiomotor, Mise en scène: Dio van der Velden)\n\n" +
+						"<strong>2018</strong> <em>De Vrouw Met de Baard</em> (Groninger Studententoneel, Mise en scène: Jelle Buning)\n\n" +
+						"<strong>2016</strong> <em>De Mensenhater</em> (Eloquentia, Mise en scène: Joke Holwerda)\n\n" +
+						"<strong>2015</strong> <em>SHOW!</em> (Eloquentia, Mise en scène: Joke Holwerda)\n",
+		portfolioModelHeadline: "Mannequin",
+		portfolioModelText: 
+						"<strong>2026</strong> <em>Campagne d'affichage 'As You Like It'</em> (Shakespearetheater Diever)\n\n" +
+						"<strong>2025</strong> <em>Willex Bags For Bikes</em> (Pointed N.V.)\n\n" +
+						"<strong>2025</strong> <em>Campagne d'affichage 'De Noordelijke Banenbeurs'</em> (DRT Events)\n",
+        portfolioExperienceTitle: "Expérience (bref)",
+        portfolioExperienceText:
+          "Siebren de van der Schueren est un acteur et mannequin aux multiples talents. Il s'est fait connaître grâce à ses grands rôles au Shakespearetheater Diever, l'un des plus grands théâtres (en plein air) des Pays-Bas, où il s'est déjà produit devant plus de 120 000 spectateurs. En 2024, il a participé au film Unspoken (Asesina Productions, réalisation : Martin Bergmann), avec lequel il a remporté le prix du meilleur film au 48Film Festival de Groningue. Auparavant, il avait notamment joué dans la pièce Broodkapje (2023, TIS, mise en scène : Jack Nieborg) et dans le film Liek Achter de Badde (2019, On Air Media, réalisation : Dirk de Jong). En 2026, il a participé au film They Serve With the Colors (Asesina Productions, réalisation : Jaap Broekstra).",
+        portfolioShowreelTitle: "",
+        portfolioShowreelNote: "Showreel intégré depuis YouTube.",
+        photosTitleTop: "",
+        photosHeadline: "Galerie",
+        photosText: "Sélection de portraits et photos de mannequin. Remplace les noms de fichiers par tes propres photos (25).",
+        footerText: "© 2026 — Acteur & Mannequin"
+      }
+    };
+
+    const $ = (sel) => document.querySelector(sel);
+
+    const langSelect = $("#langSelect");
+
+    function applyLanguage(lang){
+      const t = translations[lang] || translations.nl;
+      document.documentElement.lang = lang;
+      // Simple key mapping
+      $("#langLabel").textContent = t.langLabel;
+      $("#brandRole").textContent = t.brandRole;
+
+      $("#navHome").textContent = t.navHome;
+      $("#navPortfolio").textContent = t.navPortfolio;
+      $("#navPhotos").textContent = t.navPhotos;
+
+      $("#homeHeadline").innerHTML = t.homeHeadline;
+      $("#homeSummary").innerHTML = t.homeSummary;
+
+      $("#factsTitle").textContent = t.factsTitle;
+      $("#factHeight").textContent = t.factHeight;
+      $("#factDob").textContent = t.factDob;
+      $("#factLanguages").textContent = t.factLanguages;
+      $("#factAvailability").textContent = t.factAvailability;
+      $("#languagesValue").textContent = t.languagesValue;
+      $("#availabilityValue").textContent = t.availabilityValue;
+
+      $("#contactTitle").textContent = t.contactTitle;
+      $("#contactNote").textContent = t.contactNote;
+      $("#contactEmailLabel").textContent = t.contactEmailLabel;
+      $("#contactPhoneLabel").textContent = t.contactPhoneLabel;
+	  $("#contactTitlePortfolio").textContent = t.contactTitlePortfolio;
+      $("#contactNotePortfolio").textContent = t.contactNotePortfolio;
+	  $("#contactEmailLabelPortfolio").textContent = t.contactEmailLabelPortfolio;
+      $("#contactPhoneLabelPortfolio").textContent = t.contactPhoneLabelPortfolio;
+	  $("#contactTitleFotos").textContent = t.contactTitleFotos;
+      $("#contactNoteFotos").textContent = t.contactNoteFotos;
+	  $("#contactEmailLabelFotos").textContent = t.contactEmailLabelFotos;
+      $("#contactPhoneLabelFotos").textContent = t.contactPhoneLabelFotos;
+
+      $("#photoSectionTitleHome").textContent = t.photoSectionTitleHome;
+      $("#showreelTitle").textContent = t.showreelTitle;
+      $("#showreelNote").textContent = t.showreelNote;
+
+      $("#portfolioTitleTop").textContent = t.portfolioTitleTop;
+      $("#portfolioFilmHeadline").textContent = t.portfolioFilmHeadline;
+      $("#portfolioFilmText").innerHTML = t.portfolioFilmText;
+	  $("#portfolioTheatreHeadline").textContent = t.portfolioTheatreHeadline;
+      $("#portfolioTheatreText").innerHTML = t.portfolioTheatreText;
+	  $("#portfolioModelHeadline").textContent = t.portfolioModelHeadline;
+      $("#portfolioModelText").innerHTML = t.portfolioModelText;
+
+      $("#portfolioExperienceTitle").textContent = t.portfolioExperienceTitle;
+      $("#portfolioExperienceText").textContent = t.portfolioExperienceText;
+
+      $("#portfolioShowreelTitle").textContent = t.portfolioShowreelTitle;
+      $("#portfolioShowreelNote").textContent = t.portfolioShowreelNote;
+
+      $("#photosTitleTop").textContent = t.photosTitleTop;
+      $("#photosHeadline").textContent = t.photosHeadline;
+      $("#photosText").textContent = t.photosText;
+
+      $("#footerText").textContent = t.footerText;
+    }
+
+    function setActivePage(pageId){
+      // pages
+      const pages = document.querySelectorAll(".page");
+      pages.forEach(p => p.classList.remove("is-active"));
+
+      const pageMap = {
+        home: "page-home",
+        portfolio: "page-portfolio",
+        photos: "page-photos"
+      };
+
+      const target = document.getElementById(pageMap[pageId] || "page-home");
+      if(target) target.classList.add("is-active");
+
+      // nav current
+      document.querySelectorAll("nav a[data-page]").forEach(a => {
+        const isCurrent = a.getAttribute("data-page") === pageId;
+        a.setAttribute("aria-current", isCurrent ? "page" : "false");
+      });
+    }
+
+    // Routing (simple hash)
+    function route(){
+      const hash = (location.hash || "#home").replace("#","").trim();
+      const pageId = (hash === "portfolio") ? "portfolio" : (hash === "fotos" ? "photos" : "home");
+      setActivePage(pageId);
+    }
+
+    // Ensure first load uses hash
+    window.addEventListener("hashchange", route);
+
+    // Language selection
+    langSelect.addEventListener("change", (e) => applyLanguage(e.target.value));
+
+    // Init
+    $("#year").textContent = "2026";
+
+    // Default: NL
+    applyLanguage("nl");
+    route();
+  </script>
 </body>
 </html>
-
-
-
-
